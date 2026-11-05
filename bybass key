@@ -1,0 +1,16 @@
+-- Delta Roblox Bypass Script
+local function bypassDelta()
+    local deltaModule = game:GetService("ReplicatedStorage"):FindFirstChild("DeltaModule")
+    if deltaModule then
+        for _, child in ipairs(deltaModule:GetChildren()) do
+            if child:IsA("RemoteFunction") or child:IsA("RemoteEvent") then
+                child:FireServer({Bypass = true, Version = "9999"})
+            end
+        end
+        print("Delta Bypassed Successfully.")
+    else
+        print("Delta Module not found.")
+    end
+end
+
+bypassDelta()
